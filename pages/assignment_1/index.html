@@ -1,0 +1,107 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../../libs/mindar/mindar-image-three.prod.js"></script>
+  <script src="./main.js" type="module"></script>
+  <script src="./image-viewer.js" type="module"></script>
+  <style>
+    html,
+    body {
+      position: relative;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: transparent;
+      color: #fff
+    }
+
+    .viewer {
+      position: relative;
+      width: 400px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .viewer img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain
+    }
+
+    .viewer button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: 1px solid #fff;
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      cursor: pointer
+    }
+
+    .viewer button:hover {
+      background: rgba(255, 255, 255, 0.2)
+    }
+
+    .viewer button:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px
+    }
+
+    .viewer button.pulse {
+      animation: button-pulse 700ms ease-out;
+    }
+
+    @keyframes button-pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.95);
+      }
+      45% {
+        box-shadow: 0 0 0 18px rgba(255, 255, 255, 0.5);
+      }
+      100% {
+        box-shadow: 0 0 0 36px rgba(255, 255, 255, 0);
+      }
+    }
+
+    .viewer .prev {
+      left: 16px
+    }
+
+    .viewer .next {
+      right: 16px
+    }
+
+    #ar-div {
+      width: 400px;
+      height: 200px;
+      visibility: hidden;
+
+      background: transparent;
+      opacity: 1;
+      font-size: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      color: white;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="ar-div" class="viewer" aria-label="Image viewer">
+    <button class="prev" data-image-prev aria-label="Previous image">&#x276E;</button>
+    <img data-image-viewer alt="Image" />
+    <button class="next" data-image-next aria-label="Next image">&#x276F;</button>
+  </div>
+</body>
+
+</html>
